@@ -1,10 +1,8 @@
-# Separate Anything You Describe
-[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2308.05037) [![GitHub Stars](https://img.shields.io/github/stars/Audio-AGI/AudioSep?style=social)](https://github.com/Audio-AGI/AudioSep/) [![githubio](https://img.shields.io/badge/GitHub.io-Demo_Page-blue?logo=Github&style=flat-square)](https://audio-agi.github.io/Separate-Anything-You-Describe) 
+# SonicSplit: Separate Anything You Describe
 
-This repository contains the official implementation of ["Separate Anything You Describe"](https://audio-agi.github.io/Separate-Anything-You-Describe/AudioSep_arXiv.pdf).
+<!-- This repository contains the official implementation of ["SonicSplit: Separate Anything You Describe"](https://audio-agi.github.io/Separate-Anything-You-Describe/AudioSep_arXiv.pdf). -->
 
-We introduce AudioSep, a foundation model for open-domain sound separation with natural language queries. AudioSep demonstrates strong separation performance and impressive zero-shot generalization ability on numerous tasks such as audio event separation, musical instrument separation, and
-speech enhancement. Check the separated audio examples in the [Demo Page](https://audio-agi.github.io/Separate-Anything-You-Describe/)!
+We introduce SonicSplit, a foundation model for open-domain sound separation with natural language queries. SonicSplit demonstrates strong separation performance and impressive zero-shot generalization ability on numerous tasks such as audio event separation, musical instrument separation, and speech enhancement. Check the separated audio examples in the [Demo Page](https://audio-agi.github.io/Separate-Anything-You-Describe/)!
 
 <p align="center">
   <img align="middle" width="800" src="assets/results.png"/>
@@ -13,17 +11,17 @@ speech enhancement. Check the separated audio examples in the [Demo Page](https:
 <hr>
 
 ## TODO
-- [x] AudioSep training & finetuning code release.
-- [x] AudioSep base model checkpoint release.
+- [x] SonicSplit training & finetuning code release.
+- [x] SonicSplit base model checkpoint release.
 - [ ] Evaluation benchmark release.
 
 <hr>
 
 ## Setup
-Clone the repository and setup the conda environment: 
+Clone the repository and set up the conda environment: 
 
   ```shell
-  git clone https://github.com/Audio-AGI/AudioSep.git && \
+  git clone  https://github.com/ojuswisinghal17/SonicSplit.git && \
   cd AudioSep && \ 
   conda env create -f environment.yml && \
   conda activate AudioSep
@@ -34,11 +32,10 @@ Download [model weights (Google Drive)](https://drive.google.com/drive/folders/1
 
 ## Inference 
 
-
   ```python
   from pipeline import build_audiosep, inference
 
-  device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+  device = torch.device('cuda' if torch.cuda.is available() else 'cpu')
 
   model = build_audiosep(
         config_yaml='config/audiosep_base.yaml', 
@@ -49,7 +46,7 @@ Download [model weights (Google Drive)](https://drive.google.com/drive/folders/1
   text = 'textual_description'
   output_file='separated_audio.wav'
 
-  # AudioSep processes the audio at 32 kHz sampling rate  
+  # SonicSplit processes the audio at 32 kHz sampling rate  
   inference(model, audio_file, text, output_file, device)
   ```
 
@@ -71,29 +68,31 @@ data:
         ...
 ```
 
-Train AudioSep from scatch:
+Train SonicSplit from scratch:
   ```python
-  python train.py --workspace workspace/AudioSep --config_yaml config/audiosep_base.yaml --resume_checkpoint_path checkpoint/ ''
+  python train.py --workspace workspace/SonicSplit --config_yaml config/audiosep_base.yaml --resume_checkpoint_path checkpoint/ ''
   ```
 
-Finetune AudioSep from pretrained checkpoint:
+Finetune SonicSplit from a pretrained checkpoint:
   ```python
-  python train.py --workspace workspace/AudioSep --config_yaml config/audiosep_base.yaml --resume_checkpoint_path path_to_checkpoint
+  python train.py --workspace workspace/SonicSplit --config_yaml config/audiosep_base.yaml --resume_checkpoint_path path_to_checkpoint
   ```
 
 <hr>
 
 ## Cite this work
 
-If you found this tool useful, please consider citing
+If you found this tool useful, please consider citing:
+
 ```bibtex
 @article{liu2023separate,
-  title={Separate Anything You Describe},
+  title={SonicSplit: Separate Anything You Describe},
   author={Liu, Xubo and Kong, Qiuqiang and Zhao, Yan and Liu, Haohe and Yuan, Yi and Liu, Yuzhuo and Xia, Rui and Wang, Yuxuan and Plumbley, Mark D and Wang, Wenwu},
   journal={arXiv preprint arXiv:2308.05037},
   year={2023}
 }
 ```
+
 ```bibtex
 @inproceedings{liu22w_interspeech,
   title={Separate What You Describe: Language-Queried Audio Source Separation},
@@ -102,4 +101,5 @@ If you found this tool useful, please consider citing
   booktitle={Proc. Interspeech},
   pages={1801--1805},
 }
+```
 ```
